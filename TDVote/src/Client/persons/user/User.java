@@ -6,13 +6,19 @@ public class User extends Person {
 
         private int studentId = 0;
         private String password = null;
+
+        private String OneTimePassword = null;
         public User(String firstName, String lastName, int studentId, String password) {
             super(firstName, lastName);
             this.studentId = studentId;
             this.password = password;
         }
 
-        @Override
+        public void setOneTimePassword(String oneTimePassword) {
+            OneTimePassword = oneTimePassword;
+        }
+
+    @Override
         public boolean equals(Object o) {
             if (o == this) return true;
             if (!(o instanceof User)) {
