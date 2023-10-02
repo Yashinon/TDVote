@@ -3,15 +3,31 @@ package Client.persons.candidate;
 import Client.persons.Person;
 
 import java.util.Objects;
+import java.util.Optional;
 
-    public class Candidate extends Person {
+public class Candidate extends Person {
 
         private int nbVotes;
+        private int rank; // rank works like an id
+        private Optional<String> pitch;
 
-        public Candidate(String firstName, String lastName, String pitch) {
+        public Candidate(int rank,String firstName, String lastName, String pitch) {
             super(firstName, lastName);
+            this.rank = rank;
             this.nbVotes = 0;
+            if (pitch != null) {
+                this.pitch = Optional.of(pitch);
+            } else {
+                this.pitch = Optional.empty();
+            }
         }
+
+        public Candidate(int rank,String firstName, String lastName) {
+            this(rank,firstName, lastName, null);
+        }
+
+        public int getRank() {return rank;}
+        public Optional<String> getPitch() {return pitch;}
 
         public int getNumberOfVotes() {
             return nbVotes;
